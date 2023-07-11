@@ -1,1 +1,1 @@
-`yarn prepare` to add husky pre-commit hooks
+`yarn prepare` to enable husky pre-commit hooks

@@ -8,6 +8,7 @@ import { errorHandler, errorNotFoundHandler } from "./middlewares/errorHandler";
 import { indexRouter } from "./routes/index";
 // Create Express server
 export const app = express();
+app.use(express.json());
 
 // Express configuration
 const PORT = process.env.PORT || 3005;

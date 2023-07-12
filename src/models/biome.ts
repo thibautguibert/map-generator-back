@@ -20,9 +20,10 @@ export function createRandomBiomeArea(
   mapWidth: number,
   mapHeight: number,
   canOverflow = true,
+  squaredBiomes = false,
 ): BiomeArea {
   const biome = pickRandomBiome(availableBiome);
-  const { x, width, y, height } = createRandomArea(mapWidth, mapHeight, canOverflow);
+  const { x, width, y, height } = createRandomArea(mapWidth, mapHeight, canOverflow, squaredBiomes);
 
   return { biome, x, width, y, height };
 }
@@ -32,14 +33,19 @@ function pickRandomBiome(availableBiome: Biome[]): Biome {
   return availableBiome[getRandomFloor(availableBiome.length)];
 }
 
-export function createRandomArea(mapWidth: number, mapHeight: number, canOverflow: boolean): Area {
+export function createRandomArea(
+  mapWidth: number,
+  mapHeight: number,
+  canOverflow: boolean,
+  squaredBiomes?: boolean,
+): Area {
   const x = getRandomFloor(mapWidth);
   const maxWidth = canOverflow ? mapWidth : mapWidth - x;
   const width = getRandomFloor(maxWidth) + 1;
 
   const y = getRandomFloor(mapHeight);
   const maxHeight = canOverflow ? mapHeight : mapHeight - y;
-  const height = getRandomFloor(maxHeight) + 1;
+  const height = squaredBiomes ? width : getRandomFloor(maxHeight) + 1;
 
   return { x, width, y, height };
 }

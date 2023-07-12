@@ -7,6 +7,7 @@ export interface MapConfig {
   width: number;
   height: number;
   canOverflow?: boolean;
+  squaredBiomes?: boolean;
 }
 
 export interface Map {
@@ -17,11 +18,11 @@ export interface Map {
 }
 
 export const generateMap = async (config: MapConfig): Promise<Map> => {
-  const { availableBiome, numberOfBiomes, width, height, baseBiome, canOverflow } = config;
+  const { availableBiome, numberOfBiomes, width, height, baseBiome, canOverflow, squaredBiomes } = config;
   const biomeAreas: BiomeArea[] = [];
 
   for (let i = 0; i < numberOfBiomes; i++) {
-    const newBiomeArea: BiomeArea = createRandomBiomeArea(availableBiome, width, height, canOverflow);
+    const newBiomeArea: BiomeArea = createRandomBiomeArea(availableBiome, width, height, canOverflow, squaredBiomes);
     biomeAreas.push(newBiomeArea);
   }
 

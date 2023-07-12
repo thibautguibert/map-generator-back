@@ -37,7 +37,7 @@ export function createRandomArea(mapWidth: number, mapHeight: number, canOverflo
   const maxWidth = canOverflow ? mapWidth : mapWidth - x;
   const width = getRandomFloor(maxWidth) + 1;
 
-  const y = getRandomFloor(mapWidth);
+  const y = getRandomFloor(mapHeight);
   const maxHeight = canOverflow ? mapHeight : mapHeight - y;
   const height = getRandomFloor(maxHeight) + 1;
 

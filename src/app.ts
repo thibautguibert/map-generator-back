@@ -1,13 +1,13 @@
 import express from "express";
+import cors from "cors";
 import logger from "morgan";
 import * as path from "path";
 
 import { errorHandler, errorNotFoundHandler } from "./middlewares/errorHandler";
-
-// Routes
 import { indexRouter } from "./routes/index";
-// Create Express server
+
 export const app = express();
+app.use(cors());
 app.use(express.json());
 
 // Express configuration

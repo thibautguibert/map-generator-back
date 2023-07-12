@@ -29,11 +29,7 @@ export function createRandomBiomeArea(
 
 function pickRandomBiome(availableBiome: Biome[]): Biome {
   if (availableBiome.length === 0) throw new NoBiomeError({ cause: "createRandomBiomeArea" });
-  if (availableBiome.length === 1) {
-    return availableBiome[0];
-  } else {
-    return availableBiome[getRandomFloor(availableBiome.length - 1)];
-  }
+  return availableBiome[getRandomFloor(availableBiome.length)];
 }
 
 export function createRandomArea(mapWidth: number, mapHeight: number, canOverflow: boolean): Area {

@@ -10,7 +10,11 @@ export const createRandomMap = async (req: Request, res: Response, next: NextFun
     return;
   }
 
-  const mapConfig: MapConfig = req.body;
-  const randomMap = await generateMap(mapConfig);
-  res.status(200).send(randomMap);
+  try {
+    const mapConfig: MapConfig = req.body;
+    const randomMap = await generateMap(mapConfig);
+    res.status(200).send(randomMap);
+  } catch (error) {
+    next(error);
+  }
 };
